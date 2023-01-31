@@ -1,0 +1,1 @@
+powershell -NoExit -NoProfile -f "C:\python-envs\profile.ps1"

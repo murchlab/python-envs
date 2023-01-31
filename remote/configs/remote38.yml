@@ -1,0 +1,5 @@
+name: remote38
+
+dependencies:
+  - notebook
+  - syncthing
