@@ -33,5 +33,5 @@ $Env:MAMBA_ROOT_PREFIX = Join-Path -Path $scriptPath -ChildPath "mamba"
 $Env:MAMBA_EXE = Join-Path -Path $Env:MAMBA_ROOT_PREFIX -ChildPath "micromamba.exe"
 (& $Env:MAMBA_EXE 'shell' 'hook' -s 'powershell' -p $Env:MAMBA_ROOT_PREFIX) | Out-String | Invoke-Expression
 
-micromamba -r "$Env:MAMBA_ROOT_PREFIX" create -y -n mambabase python=3.8
-Start-Sleep 60
+micromamba -r "$Env:MAMBA_ROOT_PREFIX" create -y -n mambabase38 --file mamba\mambabase38.yml
+# Start-Sleep 60

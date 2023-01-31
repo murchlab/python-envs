@@ -1,5 +1,6 @@
 name: remote38
 
 dependencies:
+  - python=3.8
   - notebook
   - syncthing

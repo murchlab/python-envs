@@ -1,0 +1,5 @@
+name: mambabase38
+
+dependencies:
+  - python=3.8
+  - requests

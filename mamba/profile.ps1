@@ -4,5 +4,5 @@ $Env:MAMBA_EXE = (Join-Path -Path $Env:MAMBA_ROOT_PREFIX -ChildPath "micromamba.
 (& $Env:MAMBA_EXE 'shell' 'hook' -s 'powershell' -p $Env:MAMBA_ROOT_PREFIX) | Out-String | Invoke-Expression
 Set-Alias mamba micromamba
 Set-Alias conda micromamba
-micromamba activate mambabase
+micromamba activate mambabase38
 #endregion

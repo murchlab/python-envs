@@ -5,8 +5,11 @@ mamba/pkgs
 mamba/Scripts
 
 
-# Executable files
+# Binary files
 *.exe
+*.dll
+*.zip
+remote/syncthing
 
 
 # Byte-compiled / optimized / DLL files
