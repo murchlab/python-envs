@@ -1,36 +1,37 @@
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+
 Write-Output "Installing..."
 
-if (Get-Command tarff -errorAction SilentlyContinue)
+if ((Get-Command tar -errorAction SilentlyContinue) -AND (Get-Command bzip2 -errorAction SilentlyContinue))
 {
     Write-Output "Downloading Micromamba..."
-    Invoke-Webrequest -URI https://micro.mamba.pm/api/micromamba/win-64/latest -OutFile micromamba.tar.bz2
+    Invoke-Webrequest -URI https://micro.mamba.pm/api/micromamba/win-64/latest -OutFile mamba\micromamba.tar.bz2
 
     Write-Output "Extracting..."
-    tar xf micromamba.tar.bz2
+    tar xfC mamba\micromamba.tar.bz2 mamba\
 
     Write-Output "Cleaning up..."
-    Remove-Item micromamba.tar.bz2
+    Remove-Item mamba\micromamba.tar.bz2
 } else {
     Write-Output "Downloading Micromamba..."
-    (New-Object Net.WebClient).DownloadFile('https://murch.physics.wustl.edu/remote/archive/micromamba.zip', 'micromamba.zip')
+    (New-Object Net.WebClient).DownloadFile('https://murch.physics.wustl.edu/remote/archive/micromamba.zip', 'mamba\micromamba.zip')
 
     Write-Output "Extracting..."
-    Expand-Archive micromamba.zip -DestinationPath .
+    Expand-Archive mamba\micromamba.zip -DestinationPath mamba\
 
     Write-Output "Cleaning up..."
-    Remove-Item micromamba.zip
+    Remove-Item mamba\micromamba.zip
 }
 
-Move-Item -Force Library\bin\micromamba.exe micromamba.exe
-Remove-Item -Recurse -Force Library
-Remove-Item -Recurse -Force info
+Move-Item -Force mamba\Library\bin\micromamba.exe mamba\micromamba.exe
+Remove-Item -Recurse -Force mamba\Library\
+Remove-Item -Recurse -Force mamba\info\
 
 Write-Output "Installing base environment..."
 
-$Env:MAMBA_ROOT_PREFIX = $scriptPath
-$Env:MAMBA_EXE = (Join-Path -Path $scriptPath -ChildPath "micromamba.exe")
+$Env:MAMBA_ROOT_PREFIX = Join-Path -Path $scriptPath -ChildPath "mamba"
+$Env:MAMBA_EXE = Join-Path -Path $Env:MAMBA_ROOT_PREFIX -ChildPath "micromamba.exe"
 (& $Env:MAMBA_EXE 'shell' 'hook' -s 'powershell' -p $Env:MAMBA_ROOT_PREFIX) | Out-String | Invoke-Expression
 
-micromamba -r "$scriptPath" create -y -n mambabase python=3.8
+micromamba -r "$Env:MAMBA_ROOT_PREFIX" create -y -n mambabase python=3.8
 Start-Sleep 60

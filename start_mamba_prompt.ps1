@@ -1,1 +1,1 @@
-powershell -NoExit -NoProfile -f "C:\python-envs\profile.ps1"
+powershell -NoExit -NoProfile -f "C:\python-envs\mamba\profile.ps1"
