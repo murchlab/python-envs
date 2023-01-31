@@ -1,3 +1,14 @@
+# Mamba files
+mamba/condabin
+mamba/envs
+mamba/pkg
+mamba/Scripts
+
+
+# Executable files
+*.exe
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
