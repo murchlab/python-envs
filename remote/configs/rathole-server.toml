@@ -1,0 +1,10 @@
+[server]
+bind_addr = "0.0.0.0:35282"
+
+[server.services.chellywindows-jupyter]
+token = "9def775f-955d-4f37-9770-3a3ffcf8d421"
+bind_addr = "0.0.0.0:52558"
+
+[server.services.chellywindows-vnc]
+token = "690bd6c9-de96-4e79-ac21-fdadd67526c6"
+bind_addr = "0.0.0.0:52559"
