@@ -20,6 +20,9 @@ else:
             'id': '',
             'domain-name': ''
         },
+        'rathole': {
+            'port': 0
+        },
         'syncthing': {
             'port': 0
         },
@@ -42,6 +45,10 @@ while (not config['jupyter']['port']) or (config['jupyter']['port'] == config['s
 
 while (not config['vnc']['port']) or (config['vnc']['port'] == config['syncthing']['port']) or (config['vnc']['port'] == config['jupyter']['port']):
     config['vnc']['port'] = random.randint(10000, 65536)
+
+if config['host']['domain-name']:
+    while (not config['rathole']['port']) or (config['rathole']['port'] == config['syncthing']['port']) or (config['rathole']['port'] == config['jupyter']['port']) or (config['rathole']['port'] == config['vnc']['port']):
+        config['rathole']['port'] = random.randint(10000, 65536)
 
 syncthing_config_path = os.path.join(dir, 'syncthing\config.xml')
 

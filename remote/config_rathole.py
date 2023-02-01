@@ -30,10 +30,10 @@ if not config['host']['domain-name']:
             rathole_gateway_path = os.path.join(rathole_configs_path, gateway)
             if not os.path.exists(rathole_gateway_path):
                 os.makedirs(rathole_gateway_path)
-            gateway_config_path = os.path.join(network_path, f"remote-configs\{gateway_dict[gateway]['id']}.toml")
+            gateway_config_path = os.path.join(network_path, f'remote-configs\{gateway}.toml')
             with open(gateway_config_path, "rb") as f:
                 gateway_config = tomli.load(f)
-            gateway_domain_name = gateway_config['host']['domain']
+            gateway_domain_name = gateway_config['host']['domain-name']
             gateway_port = gateway_config['rathole']['port']
             toml_path = os.path.join(rathole_gateway_path, f"{config['host']['id']}.toml")
             toml_dict = {
