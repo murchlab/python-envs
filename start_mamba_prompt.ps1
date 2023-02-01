@@ -1,1 +1,2 @@
-powershell -NoExit -NoProfile -f "C:\python-envs\mamba\profile.ps1"
+$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+powershell -NoExit -NoProfile -f (Join-Path -Path $scriptPath -ChildPath "mamba\profile.ps1")

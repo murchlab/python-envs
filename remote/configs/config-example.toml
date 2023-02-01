@@ -1,0 +1,11 @@
+[domain]
+name = ""
+
+[syncthing]
+gui-port = 28384
+
+[jupyter]
+port = 35092
+
+[vnc]
+port = 49130

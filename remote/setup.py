@@ -1,5 +1,6 @@
 import os
 import requests
+import zipfile
 
 def download(url: str, dest_folder: str, filename=None):
     if not os.path.exists(dest_folder):
@@ -22,6 +23,10 @@ def download(url: str, dest_folder: str, filename=None):
         print("Download failed: status code {}\n{}".format(r.status_code, r.text))
 
 dir = os.path.dirname(os.path.realpath(__file__))
-rathole_dir = os.path.join(dir, 'frp')
 url = 'https://github.com/rapiz1/rathole/releases/download/v0.4.7/rathole-x86_64-pc-windows-msvc.zip'
 download(url, dir, 'rathole.zip')
+rathole_path = os.path.join(dir, 'rathole.zip')
+rathole_dir = os.path.join(dir, 'rathole')
+with zipfile.ZipFile(rathole_path, 'r') as zip_ref:
+    zip_ref.extractall(rathole_dir)
+os.remove(rathole_path)

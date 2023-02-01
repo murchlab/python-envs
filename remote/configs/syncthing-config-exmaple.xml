@@ -1,0 +1,5 @@
+<configuration version="37">
+    <gui enabled="true">
+        <address>127.0.0.1:40468</address>
+    </gui>
+</configuration>

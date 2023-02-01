@@ -5,6 +5,15 @@ mamba/pkgs
 mamba/Scripts
 
 
+# Syncthing files
+remote/networks
+remote/configs/config.toml
+
+
+# Rathole files
+remote/rathole
+
+
 # Binary files
 *.exe
 *.dll

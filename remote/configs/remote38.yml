@@ -2,6 +2,8 @@ name: remote38
 
 dependencies:
   - python=3.8
+  - tomli
+  - tomli-w
   - requests
   - notebook
   - syncthing
